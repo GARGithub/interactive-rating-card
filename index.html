@@ -58,7 +58,7 @@
         display: none !important;
       }
 
-      .container {
+      .main {
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -98,8 +98,8 @@
       }
 
       .submit .card-header img {
-        height: 3rem;
-        padding: 0.95rem;
+        height: 3.2rem;
+        padding: 1.1rem;
         border-radius: 50%;
         background-color: var(--dark-blue);
       }
@@ -121,24 +121,23 @@
         border: none;
         display: flex;
         justify-content: space-between;
+        margin-top: 1rem;
       }
 
       .rating-stars legend {
         opacity: 0;
       }
 
-      #rating-form label {
-        position: relative;
-      }
-
-      #rating-form input[type='radio'] {
+      #rating-form input[type='radio'],
+      .rating-stars legend {
         position: absolute;
         opacity: 0;
       }
 
       .bubble {
-        height: 3rem;
-        width: 3rem;
+        display: inline-block;
+        height: 3.2rem;
+        width: 3.2rem;
         border-radius: 50%;
         text-align: center;
         line-height: 3.3rem;
@@ -162,14 +161,13 @@
       }
 
       button[type='submit'] {
-        font-size: 1rem;
         font-weight: 700;
         letter-spacing: 0.2rem;
         text-transform: uppercase;
         color: var(--white);
         background-color: var(--orange);
         width: 100%;
-        padding: 1.2rem;
+        padding: 0.8rem;
         border: none;
         border-radius: 2rem;
         margin-top: 1.75rem;
@@ -187,7 +185,7 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <main class="main">
       <div class="card submit">
         <header class="card-header">
           <img src="./images/icon-star.svg" alt="" />
@@ -198,31 +196,29 @@
             Please let us know how we did with your support request. All
             feedback is appreciated to help us improve our offering!
           </p>
-        </div>
-        <div class="card-footer">
           <form id="rating-form" action="#">
             <fieldset class="rating-stars">
               <legend>Choose a review</legend>
-              <label for="one">
+              <div class="radio-wrapper">
                 <input type="radio" name="rating" id="one" value="1" />
-                <div class="bubble">1</div>
-              </label>
-              <label for="two">
+                <label class="bubble" for="one"> 1 </label>
+              </div>
+              <div class="radio-wrapper">
                 <input type="radio" name="rating" id="two" value="2" />
-                <div class="bubble">2</div>
-              </label>
-              <label for="three">
+                <label class="bubble" for="two"> 2 </label>
+              </div>
+              <div class="radio-wrapper">
                 <input type="radio" name="rating" id="three" value="3" />
-                <div class="bubble">3</div>
-              </label>
-              <label for="four">
+                <label class="bubble" for="three"> 3 </label>
+              </div>
+              <div class="radio-wrapper">
                 <input type="radio" name="rating" id="four" value="4" />
-                <div class="bubble">4</div>
-              </label>
-              <label for="five">
+                <label class="bubble" for="four"> 4 </label>
+              </div>
+              <div class="radio-wrapper">
                 <input type="radio" name="rating" id="five" value="5" />
-                <div class="bubble">5</div>
-              </label>
+                <label class="bubble" for="five"> 5 </label>
+              </div>
             </fieldset>
             <button aria-label="submit rating" type="submit">submit</button>
           </form>
@@ -241,7 +237,7 @@
           </p>
         </div>
       </div>
-    </div>
+    </main>
     <script>
       document.addEventListener('submit', () => {
         event.preventDefault();
