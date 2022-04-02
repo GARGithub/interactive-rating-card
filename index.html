@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      :root {
+        --font-family: 'Overpass', sans-serif;
+        --font-size: 15px;
+
+        --orange: hsl(25, 97%, 53%);
+        --white: hsl(0, 0%, 100%);
+        --light-grey: hsl(217, 12%, 63%);
+        --medium-grey: hsl(216, 12%, 54%);
+        --light-blue: hsl(184, 52%, 42%);
+        --dark-blue: hsl(213, 19%, 18%);
+        --medium-dark-blue: hsl(215, 27%, 12%);
+        --very-dark-blue: hsl(216, 12%, 8%);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-family: var(--font-family);
+        font-size: var(--font-size);
+      }
+
+      body {
+        background-color: var(--very-dark-blue);
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 375px;
+        height: 400px;
+        min-width: 375px;
+        color: var(--white);
+        background-color: var(--medium-dark-blue);
+        background: linear-gradient(
+          195deg,
+          var(--dark-blue),
+          var(--medium-dark-blue)
+        );
+        border-radius: 1.5rem;
+        padding: 2rem;
+      }
+
+      .card.submitted {
+        text-align: center;
+      }
+
+      .card.submitted .rating {
+        font-size: 1.1rem;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 1.5rem;
+        border-radius: 2rem;
+        color: var(--orange);
+        background-color: var(--dark-blue);
+      }
+
+      .submit .card-header img {
+        height: 3rem;
+        padding: 0.95rem;
+        border-radius: 50%;
+        background-color: var(--dark-blue);
+      }
+
+      p.title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 1rem;
+      }
+
+      .card-body p.description {
+        font-size: 1.05rem;
+        line-height: 1.8rem;
+        color: var(--light-grey);
+        margin-top: 1rem;
+      }
+
+      .rating-stars {
+        border: none;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .rating-stars legend {
+        opacity: 0;
+      }
+
+      #rating-form label {
+        position: relative;
+      }
+
+      #rating-form input[type='radio'] {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .bubble {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 3.3rem;
+        color: var(--light-grey);
+        background-color: var(--dark-blue);
+        cursor: pointer;
+      }
+
+      .bubble:hover {
+        color: var(--white);
+        background-color: var(--medium-grey);
+      }
+
+      #rating-form input[type='radio']:focus-visible + .bubble {
+        outline: 0.2rem dotted var(--light-blue);
+      }
+
+      #rating-form input[type='radio']:checked + .bubble {
+        color: var(--white);
+        background-color: var(--orange);
+      }
+
+      button[type='submit'] {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        color: var(--white);
+        background-color: var(--orange);
+        width: 100%;
+        padding: 1.2rem;
+        border: none;
+        border-radius: 2rem;
+        margin-top: 1.75rem;
+      }
+
+      button[type='submit']:hover {
+        color: var(--orange);
+        background-color: var(--white);
+        cursor: pointer;
+      }
+
+      button[type='submit']:focus-visible {
+        outline: 0.3rem dotted var(--light-blue);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card submit">
+        <header class="card-header">
+          <img src="./images/icon-star.svg" alt="" />
+        </header>
+        <div class="card-body">
+          <p class="title">How did we do?</p>
+          <p class="description">
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+        </div>
+        <div class="card-footer">
+          <form id="rating-form" action="#">
+            <fieldset class="rating-stars">
+              <legend>Choose a review</legend>
+              <label for="one">
+                <input type="radio" name="rating" id="one" value="1" />
+                <div class="bubble">1</div>
+              </label>
+              <label for="two">
+                <input type="radio" name="rating" id="two" value="2" />
+                <div class="bubble">2</div>
+              </label>
+              <label for="three">
+                <input type="radio" name="rating" id="three" value="3" />
+                <div class="bubble">3</div>
+              </label>
+              <label for="four">
+                <input type="radio" name="rating" id="four" value="4" />
+                <div class="bubble">4</div>
+              </label>
+              <label for="five">
+                <input type="radio" name="rating" id="five" value="5" />
+                <div class="bubble">5</div>
+              </label>
+            </fieldset>
+            <button aria-label="submit rating" type="submit">submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="card submitted hidden">
+        <header class="card-header">
+          <img src="./images/illustration-thank-you.svg" alt="" />
+        </header>
+        <div class="card-body">
+          <p class="rating">You selected 4 out of 5</p>
+          <p class="title">Thank you!</p>
+          <p class="description">
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('submit', () => {
+        event.preventDefault();
+        const form = document.getElementById('rating-form');
+        form.elements.rating.forEach((element) => {
+          if (element.checked) {
+            document.querySelector(
+              '.rating'
+            ).textContent = `You selected ${element.value} out of 5`;
+            document.querySelector('.card.submit').classList.add('hidden');
+            document
+              .querySelector('.card.submitted')
+              .classList.remove('hidden');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
